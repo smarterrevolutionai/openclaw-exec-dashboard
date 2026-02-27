@@ -33,9 +33,9 @@ Data files are maintained by **Optimus** in the infrastructure repository:
 ## 🚀 Deployment
 
 ### Production Environment
-- **URL:** http://72.62.252.232:3005
+- **URL:** http://72.62.252.232:3006
 - **Process Manager:** PM2 (`openclaw-exec-dashboard`)
-- **Port:** 3005
+- **Port:** 3006
 - **Status:** Production service (managed by Optimus)
 
 ### Local Development
