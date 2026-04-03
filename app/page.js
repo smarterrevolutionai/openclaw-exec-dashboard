@@ -82,55 +82,39 @@ const DEMO_COSTS = {
 
 const PHASE_DATA = [
   {
-    phase: 1, title: "Foundation", days: "Days 1–5", status: "active",
-    desc: "Establish access, fix security issues, set up monitoring and coordination.",
+    phase: "A", title: "Inventory Collection", days: "Phase A", status: "complete",
+    desc: "Inventory of all services, repositories, and infrastructure completed.",
+    tasks: []
+  },
+  {
+    phase: "B", title: "Branching Setup", days: "Phase B", status: "complete",
+    desc: "All repos branched main/staging/dev, GitHub authoritative, backup cron stopped.",
+    tasks: []
+  },
+  {
+    phase: "B.5", title: "Sage Integration", days: "Phase B.5", status: "complete",
+    desc: "Sage connected to Discord; currently offline, Wolf investigating.",
+    tasks: []
+  },
+  {
+    phase: "3", title: "Monitoring", days: "Phase 3", status: "active",
+    desc: "Optimus adds Orion's services, health checks every 60s, DB backups configured, 24-48h baseline observation.",
     tasks: [
-      { id:"1.1", t:"Generate SSH key for Optimus", o:"Smarty", s:"pending" },
-      { id:"1.2", t:"Optimus verifies SSH access to VPS", o:"Optimus", s:"pending" },
-      { id:"1.3", t:"Rotate compromised API tokens", o:"Optimus", s:"pending" },
-      { id:"1.4", t:"Configure Discord security settings", o:"Both", s:"pending" },
-      { id:"1.5", t:"Create Discord channel structure", o:"Optimus", s:"pending" },
-      { id:"1.6", t:"Commit all code to GitHub (backup)", o:"Smarty", s:"pending" },
-      { id:"1.7", t:"Create missing code repositories", o:"Smarty", s:"pending" },
-      { id:"1.8", t:"Set up GitHub access for both agents", o:"Both", s:"pending" },
-      { id:"1.9", t:"Full system baseline assessment", o:"Optimus", s:"pending" },
-      { id:"1.10", t:"Deploy basic monitoring", o:"Optimus", s:"pending" },
-      { id:"1.11", t:"Begin daily Discord reports", o:"Optimus", s:"pending" },
-      { id:"1.12", t:"Centralize all passwords/secrets", o:"Optimus", s:"pending" },
-      { id:"1.13", t:"Apply 33 pending server updates", o:"Optimus", s:"pending" },
-      { id:"1.14", t:"Fix 5 critical security issues", o:"Optimus", s:"pending" },
-      { id:"1.15", t:"Set up dev/staging/production branches", o:"Smarty", s:"pending" },
+      { id:"3.1", t:"Add Orion's services to monitoring", o:"Optimus", s:"complete" },
+      { id:"3.2", t:"Configure health checks every 60s", o:"Optimus", s:"complete" },
+      { id:"3.3", t:"Set up DB backups", o:"Optimus", s:"complete" },
+      { id:"3.4", t:"Establish 24-48h baseline observation", o:"Optimus", s:"pending" },
     ]
   },
   {
-    phase: 2, title: "Pipeline & Separation", days: "Days 6–12", status: "upcoming",
-    desc: "Separate dev and production environments. Automated deployments.",
-    tasks: [
-      { id:"2.1", t:"Provision dev/staging server", o:"Mark", s:"pending" },
-      { id:"2.2", t:"Configure dev/staging server", o:"Optimus", s:"pending" },
-      { id:"2.3", t:"Migrate Smarty's work to dev server", o:"Smarty", s:"pending" },
-      { id:"2.4", t:"Automated deploy: code push → staging", o:"Optimus", s:"pending" },
-      { id:"2.5", t:"Automated deploy: approval → production", o:"Optimus", s:"pending" },
-      { id:"2.6", t:"Automated backups with daily verification", o:"Optimus", s:"pending" },
-      { id:"2.7", t:"Optimus begins reviewing Smarty's code", o:"Optimus", s:"pending" },
-      { id:"2.8", t:"Performance baseline for all services", o:"Optimus", s:"pending" },
-      { id:"2.9", t:"Optimize known slow database queries", o:"Optimus", s:"pending" },
-      { id:"2.10", t:"Set up error tracking", o:"Optimus", s:"pending" },
-    ]
+    phase: "4", title: "CI/CD Pipeline", days: "Phase 4", status: "upcoming",
+    desc: "Deployment pipeline for Orion's repos, dev auto-deploys to staging, PR to main triggers gate review.",
+    tasks: []
   },
   {
-    phase: 3, title: "Full Autonomy", days: "Days 13–21", status: "upcoming",
-    desc: "Optimus fully owns production. Boundaries enforced. Continuous improvement.",
-    tasks: [
-      { id:"3.1", t:"Remove Smarty's production access", o:"Both", s:"pending" },
-      { id:"3.2", t:"Full security audit of production", o:"Optimus", s:"pending" },
-      { id:"3.3", t:"Load testing and capacity planning", o:"Optimus", s:"pending" },
-      { id:"3.4", t:"Disaster recovery drill", o:"Optimus", s:"pending" },
-      { id:"3.5", t:"Optimize server resource allocation", o:"Optimus", s:"pending" },
-      { id:"3.6", t:"Document all production procedures", o:"Optimus", s:"pending" },
-      { id:"3.7", t:"First weekly report delivered", o:"Optimus", s:"pending" },
-      { id:"3.8", t:"Team retrospective — what's working?", o:"All", s:"pending" },
-    ]
+    phase: "5", title: "Production Migration", days: "Phase 5", status: "upcoming",
+    desc: "Provision US production server Hostinger KVM 2, migrate from Malaysia, DNS-based cutover with rollback.",
+    tasks: []
   }
 ];
 
@@ -580,7 +564,9 @@ export default function Dashboard() {
     <div className="space-y-5">
       {[
         { name:"Smarty", role:"The Builder", sub:"Development Agent · 1 Month Operational", icon:Bot, color:"violet", cHex:"#a78bfa", bg:"rgba(139,92,246,0.1)", does:["Builds new features and tools","Creates sales automations","Develops integrations","Rapid prototyping","Works on dev/staging only"], doesnt:["Deploy to production directly","Touch production databases","Change live server config","Restart production services","Access production secrets"], analogy:"Your product developer. Builds the house but doesn't manage electrical or plumbing once people move in." },
-        { name:"Optimus", role:"The Guardian", sub:"Production Agent · Day 1", icon:Shield, color:"cyan", cHex:"#22d3ee", bg:"rgba(6,182,212,0.1)", does:["Monitors all production 24/7","Deploys code safely (your approval)","Manages backups and recovery","Fixes security vulnerabilities","Optimizes performance","Reviews Smarty's code","Auto-fixes minor issues","Sends daily and weekly reports"], doesnt:["Build new features","Make product decisions","Change how features work","Spend money without approval","Override your decisions"], analogy:"Your building manager and security guard. Keeps lights on, doors locked, everything running. Calls you for big decisions." }
+        { name:"Optimus", role:"The Guardian", sub:"Production Agent · Day 1", icon:Shield, color:"cyan", cHex:"#22d3ee", bg:"rgba(6,182,212,0.1)", does:["Monitors all production 24/7","Deploys code safely (your approval)","Manages backups and recovery","Fixes security vulnerabilities","Optimizes performance","Reviews Smarty's code","Auto-fixes minor issues","Sends daily and weekly reports"], doesnt:["Build new features","Make product decisions","Change how features work","Spend money without approval","Override your decisions"], analogy:"Your building manager and security guard. Keeps lights on, doors locked, everything running. Calls you for big decisions." },
+        { name:"Orion", role:"The Developer", sub:"Development Agent · Managed by Wolf", icon:Rocket, color:"amber", cHex:"#f59e0b", bg:"rgba(245,158,11,0.1)", does:["Builds and maintains smarterrevolution.com","Develops Smarter Studio features","Creates client websites","Works on dev/staging only","Implements UI/UX designs"], doesnt:["Deploy to production directly","Manage production services","Make product decisions","Access production secrets"], analogy:"Your front-end developer. Crafts beautiful interfaces and ensures client websites run smoothly." },
+        { name:"Sage", role:"The Coordinator", sub:"Development & Project Coordination · Works with Wolf & Mark", icon:Layers, color:"emerald", cHex:"#10b981", bg:"rgba(16,185,129,0.1)", does:["Coordinates cross-agent development tasks","Manages project timelines","Facilitates communication between Wolf and Mark","Supports development alongside Orion","Ensures deliverables are met"], doesnt:["Directly deploy to production","Manage infrastructure","Make unilateral decisions","Bypass review processes"], analogy:"Your project coordinator. Keeps everyone aligned and ensures work flows smoothly between teams." }
       ].map(a => (
         <Card key={a.name} className="p-6">
           <div className="flex items-center gap-3 mb-4">
@@ -622,7 +608,7 @@ export default function Dashboard() {
   );
 
   // === TAB: SERVICES ===
-  const SVC_ICONS = { CRM: Users, "Command Center": Terminal, Website: Globe, "Sales Scripts": Zap, "Cold Email": Mail, "CRM Database": Database };
+const SVC_ICONS = { CRM: Users, "Command Center": Terminal, Website: Globe, "Sales Scripts": Zap, "Cold Email": Mail, "CRM Database": Database, "Smarter Studio (prod)": Rocket, "Smarter Studio (staging)": Rocket, "Texican staging": Globe, "Browserless": Terminal, "Event Listener": Activity, "Web Builder Worker": Terminal, "Smarter Studio PostgreSQL": Database, "Texican PostgreSQL (staging)": Database };
   
   const renderServices = () => (
     <div className="space-y-3">
@@ -634,6 +620,14 @@ export default function Dashboard() {
         { n:"Sales Scripts", port:"cron", tech:"Node.js (15+ scripts)", p:"high", d:"Automated pipeline processing, lead scoring, reporting" },
         { n:"Cold Email", port:"external", tech:"PlusVibe + Inframail", p:"high", d:"12 active campaigns, 80 mailboxes across 20 domains" },
         { n:"CRM Database", port:"5433", tech:"PostgreSQL", p:"critical", d:"All your business data — contacts, deals, activities" },
+        { n:"Smarter Studio (prod)", port:"3004", tech:"Next.js (systemd)", p:"high", d:"Smarter Studio production application" },
+        { n:"Smarter Studio (staging)", port:"3012", tech:"Next.js (systemd)", p:"medium", d:"Smarter Studio staging environment" },
+        { n:"Texican staging", port:"3010", tech:"Node.js (systemd)", p:"medium", d:"Texican staging application" },
+        { n:"Browserless", port:"3200", tech:"Docker", p:"medium", d:"Headless browser automation service" },
+        { n:"Event Listener", port:"systemd", tech:"systemd", p:"medium", d:"Event listener service" },
+        { n:"Web Builder Worker", port:"systemd", tech:"systemd", p:"medium", d:"Web builder background worker" },
+        { n:"Smarter Studio PostgreSQL", port:"5433", tech:"Docker (5 schemas)", p:"high", d:"PostgreSQL for Smarter Studio (public, social_engine, analytics_engine, open_brain, marea_leads)" },
+        { n:"Texican PostgreSQL (staging)", port:"5433", tech:"Docker", p:"medium", d:"PostgreSQL for Texican staging" },
       ].map(s => {
         const I = SVC_ICONS[s.n]||Server;
         return (
