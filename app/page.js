@@ -184,6 +184,7 @@ const Badge = ({ children, variant = "default" }) => {
     active:"bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
     upcoming:"bg-zinc-500/20 text-zinc-400 border-zinc-500/30",
     pending:"bg-zinc-700/50 text-zinc-400 border-zinc-600/30",
+    complete:"bg-blue-500/20 text-blue-400 border-blue-500/30",
     bootstrapping:"bg-amber-500/20 text-amber-400 border-amber-500/30",
     default:"bg-zinc-700/50 text-zinc-300 border-zinc-600/30",
     Smarty:"bg-violet-500/20 text-violet-300 border-violet-500/30",
