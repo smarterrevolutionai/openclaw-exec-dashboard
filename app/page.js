@@ -12,8 +12,8 @@ const DASHBOARD_STATUS = {
     location: "Malaysia",
     resources: { cpu: 38, memory: 61, disk: 44, diskFreeGb: 224, memTotalGb: 32, memUsedGb: 19.5 },
     services: [
-      { name: "CRM", status: "down", port: 3000, owner: "Smarty", runtime: "PM2", priority: "critical", note: "Core CRM production app" },
-      { name: "Command Center", status: "down", port: 3001, owner: "Smarty", runtime: "Docker", priority: "critical", note: "OpenClaw command center" },
+      { name: "CRM", status: "up", port: 3000, owner: "Smarty", runtime: "PM2", priority: "critical", note: "Core CRM production app" },
+      { name: "Command Center", status: "up", port: 3001, owner: "Smarty", runtime: "Docker", priority: "critical", note: "OpenClaw command center" },
       { name: "smarterrevolutionai.com", status: "degraded", port: 3003, owner: "Smarty", runtime: "PM2", priority: "high", note: "Legacy public website" },
       { name: "Smarter Studio prod", status: "degraded", port: 3004, owner: "Orion", runtime: "systemd", priority: "high", note: "Primary Smarter Studio production app" },
       { name: "Executive Dashboard", status: "up", port: 3006, owner: "Smarty", runtime: "PM2", priority: "medium", note: "Executive operations dashboard" },
